@@ -7,8 +7,6 @@ import { createProductElement, createCartProductElement } from './helpers/shopFu
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const itemCart = document.querySelector('.cart__products');
 const products = document.querySelector('.products');
-// const total = document.querySelector('.total-price');
-// const btnsProducts = document.getElementsByClassName('product__add');
 
 const productsApi = async () => {
   const div = document.createElement('div');
@@ -31,12 +29,11 @@ const productsApi = async () => {
   }
 };
 const carts = getSavedCartIDs();
-const it = carts.filter(async (id) => {
+carts.filter(async (id) => {
   const fetch = await fetchProduct(id);
   const element = await createCartProductElement(fetch);
   itemCart.appendChild(element);
 });
-console.log(it);
 
 window.onload = () => {
   productsApi();
