@@ -123,10 +123,10 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     'Adicionar ao carrinho!',
   );
   cartButton.addEventListener('click', async () => {
+    const products = document.querySelector('.cart__products');
     saveCartID(id);
     const fetch = await fetchProduct(id);
     const element = await createCartProductElement(fetch);
-    const products = document.querySelector('.cart__products');
     products.appendChild(element);
   });
   section.appendChild(cartButton);
